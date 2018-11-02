@@ -73,8 +73,7 @@ uint32_t LCD_Init()
 	
 
 // setting COMn waveforms by 8-bit registers <3
-	//for (int i=0;i<16;i++) LCD->WF[i]=0x00;
-	
+		
 	LCD->WF8B[40] = (1<<0)|(1<<4);	//COM0
 	LCD->WF8B[52] = (1<<1)|(1<<5);	//COM1
 	LCD->WF8B[19] = (1<<2)|(1<<6);	//COM2
