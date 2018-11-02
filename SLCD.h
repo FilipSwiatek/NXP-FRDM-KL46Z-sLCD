@@ -1,7 +1,7 @@
-/*  SLCD Library by Filip Swiatek
+/*  
+	SLCD Library by Filip Swiatek
 	Designed to use with FRDM KL46Z Board.
 */
-
 #include "MKL46Z4.h"
 
 //If  LCD doesn't work, uncomment  line below!
@@ -50,7 +50,6 @@ uint32_t LCD_Init()
 	LCD->FDCR=0U; //clearing Fault detect LCD register
 	
 // setting LCD enabled ALL OF THE PINS
-
 	LCD->PEN[0] =
 	LCD_PEN_PEN(1u<<19 )|	//P19
 	LCD_PEN_PEN(1u<<18) |	//P18
@@ -65,15 +64,13 @@ uint32_t LCD_Init()
 	LCD_PEN_PEN(1u<<20)|	//P52
 	LCD_PEN_PEN(1u<<5) |	//P37
 	LCD_PEN_PEN(1u<<21)|	//P53
-	LCD_PEN_PEN(1u<<6);		//P38
+	LCD_PEN_PEN(1u<<6);	//P38
 
 // setting LCD enabled Backpannel pins // when set then backpannel actvated
 	LCD->BPEN[0] = LCD_BPEN_BPEN(1U<<18) | LCD_BPEN_BPEN(1U<<19);
 	LCD->BPEN[1] = LCD_BPEN_BPEN(1U<<20) | LCD_BPEN_BPEN(1U<<8);
-	
 
-// setting COMn waveforms by 8-bit registers <3
-		
+// setting COMn waveforms by 8-bit registers 	
 	LCD->WF8B[40] = (1<<0)|(1<<4);	//COM0
 	LCD->WF8B[52] = (1<<1)|(1<<5);	//COM1
 	LCD->WF8B[19] = (1<<2)|(1<<6);	//COM2
@@ -96,13 +93,11 @@ const volatile uint8_t digit_DEFG[4]= {10,53,7,37}; //WF8B indexes to refer to s
 	
 uint8_t LCD_Print(uint8_t digit, uint8_t number)
 {
-	
 	if(digit>3) return 1u; //error , LCD on board has only 4 digits (0:3)
 	if(number>15) return 2u; //only 0:15 is decodable by this function 
 	LCD->WF8B[digit_ABC[digit]] =ABC[number]; //saving setup to SLCD registers
 	LCD->WF8B[digit_DEFG[digit]]=DEFG[number];//saving setup to SLCD registers
-	return 0u; //error control
-	
+	return 0u; //error control	
 }
 
 uint8_t LCD_DotSet(uint8_t dot)
@@ -156,12 +151,10 @@ return 0;
 
 void LCD_Hex_Print(uint16_t value)	
 {
-	
 	for(int i=0;i<4;i++)
 	{
 	LCD_Print(i,(value>>(i*4))&0xF);
 	}
-	
 }
 
 
