@@ -109,7 +109,7 @@ uint8_t LCD_DotSet(uint8_t dot)
 
 uint8_t LCD_DotClear(uint8_t dot)
 {
-	if(dot>3) return 1; // blad - zle miejsce kropki
+	if(dot>3) return 1; // error, non correct dotpoint
 	LCD->WF8B[digit_ABC[dot]]&=~0x11;
 	return 1;
 }
