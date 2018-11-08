@@ -92,8 +92,9 @@ const volatile uint8_t digit_DEFG[4]= {10,53,7,37}; //WF8B indexes to refer to s
 	
 uint8_t LCD_Print(uint8_t digit, uint8_t number)
 {
-	if(digit>3) return 1u; //error , LCD on board has only 4 digits (0:3)
-	if(number>15) return 2u; //only 0:15 is decodable by this function 
+	if(digit>3 && number>15) return 1u; //error invalid both inputs
+	else if(number>15) return 2u; //only 0:15 is decodable by this function
+	else if(digit>3) return 3u; //error , LCD on board has only 4 digits (0:3)
 	int8_t ifdot =LCD->WF8B[digit_ABC[digit]]&((1<<0)|(1<<4)); //rescuing dots and collon part 1
 	LCD->WF8B[digit_ABC[digit]] =ABC[number]; //saving setup to SLCD registers
 	LCD->WF8B[digit_ABC[digit]] |=ifdot; // rescuing dots and collon part 2
