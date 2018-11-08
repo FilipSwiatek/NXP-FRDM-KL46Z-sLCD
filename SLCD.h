@@ -95,8 +95,11 @@ uint8_t LCD_Print(uint8_t digit, uint8_t number)
 {
 	if(digit>3) return 1u; //error , LCD on board has only 4 digits (0:3)
 	if(number>15) return 2u; //only 0:15 is decodable by this function 
+	int8_t ifdot =LCD->WF8B[digit_ABC[digit]]&((1<<0)|(1<<4)); //rescuing dots and collon part 1
 	LCD->WF8B[digit_ABC[digit]] =ABC[number]; //saving setup to SLCD registers
+	LCD->WF8B[digit_ABC[digit]] |=ifdot; // rescuing dots and collon part 2
 	LCD->WF8B[digit_DEFG[digit]]=DEFG[number];//saving setup to SLCD registers
+	
 	return 0u; //error control	
 }
 
