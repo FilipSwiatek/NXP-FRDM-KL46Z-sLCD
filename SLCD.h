@@ -1,14 +1,13 @@
 /*  
 	SLCD Library by Filip Swiatek
 	Designed to use with FRDM KL46Z Board.
+	If  LCD doesn't work, uncomment 1st line in LCD_Init() function definition
 */
 #include "MKL46Z4.h"
 
-//If  LCD doesn't work, uncomment  line below!
-//MCG->C1  |= MCG_C1_IRCLKEN_MASK | MCG_C1_IREFSTEN_MASK;
-
 uint32_t LCD_Init()
 {
+//MCG->C1  |= MCG_C1_IRCLKEN_MASK | MCG_C1_IREFSTEN_MASK;
 // enabling required ports' clocks
 	SIM->SCGC5|=SIM_SCGC5_PORTD_MASK;
 	SIM->SCGC5|=SIM_SCGC5_PORTE_MASK;
