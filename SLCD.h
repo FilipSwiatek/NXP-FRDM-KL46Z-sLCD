@@ -120,7 +120,11 @@ uint8_t LCD_DotClear(uint8_t dot)
 
 void LCD_Clear(void)
 {
-	for(int i=0;i<15;i++) LCD->WF [i]=0U; // clearing all WF registers
+	for(int i=0;i<4;i++)  // clearing all WF registers
+	{
+		LCD->WF8B[digit_ABC[i]]=0x0;
+		LCD->WF8B[digit_DEFG[i]]=0x0;
+	}
 }
 
 uint8_t LCD_Dec_Print(uint16_t value)
