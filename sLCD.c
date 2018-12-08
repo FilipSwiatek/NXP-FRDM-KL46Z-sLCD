@@ -3,7 +3,7 @@
 	Designed to use with FRDM KL46Z Board.
 */
 #include "MKL46Z4.h"
-
+#include "sLCD.h"
 
 
 uint32_t sLCD_Init()
