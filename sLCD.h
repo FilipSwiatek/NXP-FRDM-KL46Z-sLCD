@@ -4,7 +4,7 @@
 */
 #include "MKL46Z4.h"
 
-uint32_t sLCD_Init(); // sLCD initialization
+uint32_t sLCD_Init(void); // sLCD initialization
 
 uint8_t sLCD_Print(uint8_t digit, uint8_t number); // single digit print (0 to F) digits are numerated 3 down to 0
 
