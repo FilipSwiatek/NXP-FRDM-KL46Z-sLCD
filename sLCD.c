@@ -6,7 +6,7 @@
 #include "sLCD.h"
 
 
-uint32_t sLCD_Init()
+uint32_t sLCD_Init(void)
 {
 //If  LCD doesn't work, uncomment  line below!
 //MCG->C1  |= MCG_C1_IRCLKEN_MASK | MCG_C1_IREFSTEN_MASK;
